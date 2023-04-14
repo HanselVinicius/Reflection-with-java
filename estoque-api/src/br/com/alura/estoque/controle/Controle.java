@@ -19,4 +19,8 @@ public class Controle {
 	public List<String> getLista() {
 		return lista;
 	}
+
+
+	private void metodoControle1(){}
+
 }

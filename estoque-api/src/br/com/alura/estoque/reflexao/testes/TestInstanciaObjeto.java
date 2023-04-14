@@ -1,4 +1,4 @@
-package br.com.alura.estoque.reflexao;
+package br.com.alura.estoque.reflexao.testes;
 
 import br.com.alura.estoque.controle.Controle;
 

@@ -14,4 +14,17 @@ public class SubControle  extends Controle{
     }
 
 
+    public void metodoSubControle1(){
+        System.out.println("Executando o metodoSubcontrole!");
+    }
+
+
+    private String metodoSubControle2(){
+        System.out.println("executando o metodoSubcontrole2");
+
+        return "retorno do método Subcontrole2";
+    }
+
+
+
 }
