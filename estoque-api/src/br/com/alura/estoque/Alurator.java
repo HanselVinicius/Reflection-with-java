@@ -4,6 +4,7 @@ import br.com.alura.estoque.protocolo.Request;
 import br.com.alura.estoque.reflexao.Utils.Reflexao;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Map;
 
 public class Alurator {
 
@@ -21,14 +22,25 @@ public class Alurator {
 		Request request = new Request(url);
 
 		String nomeControle = request.getNomeControle();
-
-			Object instanciaControle = new Reflexao().refleteClasse(pacoteBase + nomeControle)
-					.getConstrutorPadrao()
-					.invoca();
-
-			System.out.println(instanciaControle.toString());
+		String nomeMetodo = request.getNomeMetodo();
+		Map<String, Object> queryParams = request.getQueryParams();
 
 
-		return null;
+		Object retorna = new Reflexao()
+					.refleteClasse(pacoteBase + nomeControle)
+							.criaInstancia()
+									.getMetodo(nomeMetodo,queryParams)
+				.comTratamentoDeExecao((metodo, ex ) ->{
+					System.out.println("Erro no Método " +metodo.getName() + " da classe "
+							+ metodo.getDeclaringClass() + "\n\n");
+					throw new RuntimeException("erro no método");
+				})
+											.invoca();
+
+
+//			System.out.println(retorna);
+
+
+		return retorna;
 	}
 }
