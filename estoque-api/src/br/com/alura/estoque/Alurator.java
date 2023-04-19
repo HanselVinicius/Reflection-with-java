@@ -1,5 +1,6 @@
 package br.com.alura.estoque;
 
+import br.com.alura.estoque.conversor.ConversorXML;
 import br.com.alura.estoque.protocolo.Request;
 import br.com.alura.estoque.reflexao.Utils.Reflexao;
 
@@ -38,8 +39,7 @@ public class Alurator {
 											.invoca();
 
 
-//			System.out.println(retorna);
-
+		retorna = new ConversorXML().converte(retorna);
 
 		return retorna;
 	}
