@@ -2,6 +2,8 @@ package br.com.alura.estoque;
 
 import br.com.alura.estoque.Ioc.ContainerIoC;
 import br.com.alura.estoque.conversor.ConversorXML;
+import br.com.alura.estoque.dao.ProdutoDao;
+import br.com.alura.estoque.dao.ProdutoDaoMock;
 import br.com.alura.estoque.protocolo.Request;
 import br.com.alura.estoque.reflexao.Utils.ManipuladorObjeto;
 import br.com.alura.estoque.reflexao.Utils.Reflexao;
@@ -46,5 +48,9 @@ public class Alurator {
 		retorna = new ConversorXML().converte(retorna);
 
 		return retorna;
+	}
+
+	public <T, K extends T> void registra(Class<T> tipoFonte, Class<K> tipoDestino) {
+		container.registra(tipoFonte,tipoDestino);
 	}
 }
